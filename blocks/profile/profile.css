@@ -1,0 +1,7 @@
+.profile {
+    border: 1px solid salmon;
+    display: flex;
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    color: white;
+    justify-content: space-between;
+}

@@ -1,0 +1,7 @@
+.profile__form {
+    max-width: 336px;
+    margin-left: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}

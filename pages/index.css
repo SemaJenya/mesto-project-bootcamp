@@ -10,8 +10,21 @@
 @import url(../blocks/header/header.css);
 
 /* Logo */
-@import url(../blocks/);
+@import url(../blocks/logo/logo.css);
 
 
+/* Content */
+@import url(../blocks/content/__container/content__container.css);
+
+/* Profile */
+@import url(../blocks/profile/profile.css);
+@import url(../blocks/profile/__avatar/profile__avatar.css);
+@import url(../blocks/profile/__form/profile__form.css);
+@import url(../blocks/profile/__name-box/profile__name-box.css);
+@import url(../blocks/profile/__name/profile__name.css);
+@import url(../blocks/profile/__discription/profile__description.css);
+@import url(../blocks/profile/__pen/profile__pen.css);
+@import url(../blocks/profile/__add-button/profile__add-button.css);
+@import url(../blocks/profile/__info/profile__info.css);
 
 
