@@ -51,3 +51,6 @@
 @import url(../blocks/photo-grid/__heart/photo-grid__heart.css);
 
 
+/* Footer */
+@import url(../blocks/footer/footer.css);
+@import url(../blocks/footer/__caption/footer__caption.css);
