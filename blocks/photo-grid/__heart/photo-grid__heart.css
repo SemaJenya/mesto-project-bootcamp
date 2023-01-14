@@ -1,5 +1,7 @@
 .photo-grid__heart {
     background-image: url(../../../images/serdtce.svg);
+    width: 22px;
+    height: 19px;
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
@@ -7,6 +9,9 @@
     border: none;
     padding: 0;
     cursor: pointer;
-    width: 22px;
-    height: 19px;
+    transition: ease 0.3s;
+}
+
+.photo-grid__heart:hover {
+    opacity: 0.5;
 }

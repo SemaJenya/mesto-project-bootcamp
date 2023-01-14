@@ -5,3 +5,10 @@
     flex-direction: column;
     justify-content: center;
 }
+
+@media (max-width: 660px) {
+    .profile__form {
+        align-items: center;
+        margin-bottom: 36px;
+    }
+}

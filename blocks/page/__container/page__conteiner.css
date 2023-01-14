@@ -1,4 +1,17 @@
 .page__container {
     margin: 0 auto 36.25px;
     max-width: 880px;
+ 
+}
+
+@media (max-width: 920px) {
+    .page__container {
+        margin: 0 19px 37px;
+    }
+}
+
+@media (max-width: 660px) {
+    .page__container {
+        margin: 0 0 38.25px;
+    }
 }

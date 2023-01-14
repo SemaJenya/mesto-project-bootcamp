@@ -1,4 +1,12 @@
 .profile__name-box {
     display: flex;
     max-height: 39px;
+    margin-bottom: 16px;
+}
+
+
+@media (max-width: 660px) {
+    .profile__name-box {
+        margin-bottom: 14px;
+    }
 }

@@ -1,6 +1,16 @@
 .profile__pen {
-    max-width: 24px;
-    max-height: 24px;
+    width: 24px;
+    height: 24px;
     margin-left: 18px;
     align-self: flex-end;
+    background-image: url(../../../images/Edit_Button.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: transparent;
+    border: 1px solid white;
+    transition: ease 0.3s;
+}
+
+.profile__pen:hover {
+    opacity: 0.5;
 }

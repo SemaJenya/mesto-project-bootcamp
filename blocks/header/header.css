@@ -1,6 +1,12 @@
 .header {
-    border-bottom: 1px solid rgba(84, 84, 84, 0.7);
     color: white;
     font-family: 'Inter', Arial, Helvetica, sans-serif;
     padding: 45px 0 41px;
+    border-bottom: 1px solid rgba(84, 84, 84, 0.7);
+}
+
+@media (max-width: 660px) {
+    .header {
+        padding: 28px 0 31.6px;
+    }
 }

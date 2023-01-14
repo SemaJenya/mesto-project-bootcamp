@@ -49,6 +49,7 @@
 @import url(../blocks/photo-grid/__title/photo-grid__title.css);
 @import url(../blocks/photo-grid/__title-box/photo-grid__title-box.css);
 @import url(../blocks/photo-grid/__heart/photo-grid__heart.css);
+@import url(../blocks/photo-grid/__heart/_type/photo-grid__heart_type_active.css);
 
 
 /* Footer */

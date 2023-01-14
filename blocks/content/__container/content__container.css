@@ -2,3 +2,9 @@
     margin: 0 auto;
     max-width: 880px;
 }
+
+@media (max-width: 920px) {
+    .content__container {
+        margin: 0 20px;
+    }
+}

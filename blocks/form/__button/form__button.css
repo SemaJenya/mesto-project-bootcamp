@@ -8,4 +8,9 @@
     font-size: 18px;
     line-height: 22px;
     text-align: center;
+    transition: ease 0.3s;
+}
+
+.form__button:hover {
+    opacity: 0.8;
 }
