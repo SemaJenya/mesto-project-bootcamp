@@ -4,4 +4,6 @@
     margin: 0 auto;
     color: white;
     font-family: 'Inter', Arial, Helvetica, sans-serif;
+    position: relative;
+    height: 100%;
 }

@@ -1,0 +1,12 @@
+.photo-grid__heart {
+    background-image: url(../../../images/serdtce.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    width: 22px;
+    height: 19px;
+}

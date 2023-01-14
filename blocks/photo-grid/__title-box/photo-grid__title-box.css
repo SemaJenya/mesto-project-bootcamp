@@ -1,0 +1,8 @@
+.photo-grid__title-box {
+    display: flex;
+    justify-content: space-between;
+    padding: 25px 20px;
+    align-items: center;
+    max-height: 246px;
+
+}
