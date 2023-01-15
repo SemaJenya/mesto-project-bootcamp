@@ -10,6 +10,7 @@
     background-image: url(../../../images/Close_Icon.png);
     border: none;
     transition: ease 0.3s;
+    padding: 0;
 }
 
 .form__close:hover {

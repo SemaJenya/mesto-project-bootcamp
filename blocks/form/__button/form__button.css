@@ -9,6 +9,7 @@
     line-height: 22px;
     text-align: center;
     transition: ease 0.3s;
+    padding: 0;
 }
 
 .form__button:hover {

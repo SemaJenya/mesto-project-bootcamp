@@ -10,6 +10,7 @@
     border: 1px solid white;
     transition: ease 0.3s;
     margin-top: 7px;
+    padding: 0;
 }
 
 .profile__pen:hover {
