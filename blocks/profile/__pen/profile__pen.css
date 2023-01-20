@@ -15,14 +15,13 @@
 }
 
 .profile__pen:hover {
-    opacity: 0.5;
+    opacity: 0.6;
 }
 
 @media (max-width: 440px) {
     .profile__pen {
         width: 18px;
         height: 18px;
-        align-self: center;
         margin-top: 5px;
     }
 }

@@ -5,3 +5,12 @@
     color: rgba(84, 84, 84, 1);
     margin: 0;
 }
+
+
+@media (max-width: 660px) {
+    .footer__caption {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 17px;
+    }
+}
