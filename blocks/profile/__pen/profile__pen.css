@@ -11,6 +11,7 @@
     transition: ease 0.3s;
     margin-top: 7px;
     padding: 0;
+    cursor: pointer;
 }
 
 .profile__pen:hover {
