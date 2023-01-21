@@ -1,7 +1,7 @@
-// найдем элементы для открытия и закрытия попапа
+// найдем элементы для открытия и закрытия попапа редактирования профиля
 const EditProfile = document.querySelector('.profile__pen');
-const PopupElement = document.querySelector('.popup');
-const ClosePopupElement = PopupElement.querySelector('.popup__close');
+const profilePopup = document.getElementById('profilePopup');
+const CloseProfilePopup = profilePopup.querySelector('.popup__close');
 
 // найдем элементы для редактирования формы
 const FormElement = document.querySelector('.form');
@@ -10,6 +10,10 @@ const discriptionInput = FormElement.querySelector('.form__item_type_discription
 const profileName = document.querySelector('.profile__name');
 const profileDescription = document.querySelector('.profile__description');
 
+// найдем элементы для открытия и закрытия попапа добавления карточки
+const PopupCard = document.getElementById('cardPopup');
+const addCard = document.querySelector('.profile__add-button');
+const CloseCardPopup = PopupCard.querySelector('.popup__close');
 
 
 // Функции
@@ -33,12 +37,22 @@ function handleSubmitForm (evt) {
 // События
 
 EditProfile.addEventListener('click', function() {
-    OpenedPopup(PopupElement);
+    OpenedPopup(profilePopup);
 });
 
-ClosePopupElement.addEventListener('click', function(){
-    ClosePopup(PopupElement);
+CloseProfilePopup.addEventListener('click', function(){
+    ClosePopup(profilePopup);
 })
 
 FormElement.addEventListener('submit', handleSubmitForm);
+
+addCard.addEventListener('click', function(){
+    OpenedPopup(PopupCard);
+})
+
+CloseCardPopup.addEventListener('click', function(){
+    ClosePopup(PopupCard);
+})
+
+
 

@@ -39,42 +39,48 @@
                     <div class="photo-grid__title-box">
                         <h2 class="photo-grid__title">Карачаевск</h2>
                         <button type="button" class="photo-grid__heart" aria-label="поставить класс"></button>
-                    </div>              
+                    </div> 
+                    <button type="button" class="photo-grid__delete-img" aria-label="удалить картинку"></button>             
                 </div>
                 <div class="photo-grid__container">
                     <img class="photo-grid__item" src="./images/elbrus.png" alt="Эльбрус">
                     <div class="photo-grid__title-box">
                         <h2 class="photo-grid__title">Гора Эльбрус</h2>
                         <button type="button" class="photo-grid__heart" aria-label="поставить класс"></button>
-                    </div>              
+                    </div>
+                    <button type="button" class="photo-grid__delete-img" aria-label="удалить картинку"></button>               
                 </div>
                 <div class="photo-grid__container">
                     <img class="photo-grid__item" src="./images/dombai.png" alt="Домбай">
                     <div class="photo-grid__title-box">
                         <h2 class="photo-grid__title">Домбай</h2>
                         <button type="button" class="photo-grid__heart" aria-label="поставить класс"></button>
-                    </div>              
+                    </div>
+                    <button type="button" class="photo-grid__delete-img" aria-label="удалить картинку"></button>               
                 </div>
                 <div class="photo-grid__container">
                     <img class="photo-grid__item" src="./images/elbrus.png" alt="Эльбрус">
                     <div class="photo-grid__title-box">
                         <h2 class="photo-grid__title">Гора Эльбрус</h2>
                         <button type="button" class="photo-grid__heart" aria-label="поставить класс"></button>
-                    </div>              
+                    </div>   
+                    <button type="button" class="photo-grid__delete-img" aria-label="удалить картинку"></button>            
                 </div>
                 <div class="photo-grid__container">
                     <img class="photo-grid__item" src="./images/dombai.png" alt="Домбай">
                     <div class="photo-grid__title-box">
                         <h2 class="photo-grid__title">Домбай</h2>
                         <button type="button" class="photo-grid__heart" aria-label="поставить класс"></button>
-                    </div>              
+                    </div>    
+                    <button type="button" class="photo-grid__delete-img" aria-label="удалить картинку"></button>           
                 </div>
                 <div class="photo-grid__container">
                     <img class="photo-grid__item" src="./images/karachaevsk.png" alt="карачаевск">
                     <div class="photo-grid__title-box">
                         <h2 class="photo-grid__title">Карачаево-Черкесская Республика</h2>
                         <button type="button" class="photo-grid__heart" aria-label="поставить класс"></button>
-                    </div>              
+                    </div> 
+                    <button type="button" class="photo-grid__delete-img" aria-label="удалить картинку"></button>              
                 </div>
             </section>
         </main>
@@ -84,7 +90,7 @@
         </footer>   
         
             <!--Модальное окно редактирования профиля-->
-            <div class="popup">                    
+            <div class="popup" id="profilePopup">                    
                 <div class="popup__body">
                     <h2 class="popup__title">Редактировать профиль</h2>
                     <form class="form" name="person-info-form" method="post">
@@ -95,6 +101,19 @@
                     <button type="button" class="popup__close" aria-label="крестик"></button>
                 </div>                           
             </div> 
+            <!--Модальное окно добавления карточки-->
+            <div class="popup" id="cardPopup">                    
+                <div class="popup__body">
+                    <h2 class="popup__title">Новое место</h2>
+                    <form class="form" name="person-info-form" method="post">
+                        <input type="text" class="form__item form__item_type_placeName" name="placeName" placeholder="Название">
+                        <input type="url" class="form__item form__item_type_imgLink" name="imgLink" placeholder="Ссылка на картинку">
+                        <button class="form__button" aria-label="Новая картинка">Создать</button>
+                    </form>
+                    <button type="button" class="popup__close" aria-label="крестик"></button>
+                </div>                           
+            </div> 
+
     </body>
     <script src="./index.js"></script>
 </html>
