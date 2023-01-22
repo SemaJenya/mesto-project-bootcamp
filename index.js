@@ -1,19 +1,57 @@
+// массив картинок для добавления на страницу
+const initialCards = [
+    {
+      name: 'Архыз',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+    },
+    {
+      name: 'Челябинская область',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+    },
+    {
+      name: 'Иваново',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+    },
+    {
+      name: 'Камчатка',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+    },
+    {
+      name: 'Холмогорский район',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+    },
+    {
+      name: 'Байкал',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+    }
+  ];
+
 // найдем элементы для открытия и закрытия попапа редактирования профиля
 const EditProfile = document.querySelector('.profile__pen');
-const profilePopup = document.getElementById('profilePopup');
+const profilePopup = document.querySelector('#profilePopup');
 const CloseProfilePopup = profilePopup.querySelector('.popup__close');
 
 // найдем элементы для редактирования формы
-const FormElement = document.querySelector('.form');
-const nameInput = FormElement.querySelector('.form__item_type_name');
-const discriptionInput = FormElement.querySelector('.form__item_type_discription');
+const profileFormElement = document.querySelector('.form');
+const nameInput = profileFormElement.querySelector('.form__item_type_name');
+const discriptionInput = profileFormElement.querySelector('.form__item_type_discription');
 const profileName = document.querySelector('.profile__name');
 const profileDescription = document.querySelector('.profile__description');
 
 // найдем элементы для открытия и закрытия попапа добавления карточки
-const PopupCard = document.getElementById('cardPopup');
+const PopupCard = document.querySelector('#cardPopup');
 const addCard = document.querySelector('.profile__add-button');
 const CloseCardPopup = PopupCard.querySelector('.popup__close');
+
+// найдем элементы для добавления карточки на страницу
+const template = document.querySelector('#photo-grid-item-template').content.querySelector('.photo-grid__container');
+const listPhoto = document.querySelector('.photo-grid');
+
+const cardFormElement = PopupCard.querySelector('.form');
+const placeName = cardFormElement.querySelector('.form__item_type_placeName');
+const imgLink = cardFormElement.querySelector('.form__item_type_imgLink');
+const saveCardButton = cardFormElement.querySelector('.form__button');
+
 
 
 // Функции
@@ -34,6 +72,38 @@ function handleSubmitForm (evt) {
 }
 
 
+function createCardImg (data) {
+    const cardElement = template.cloneNode(true);
+    const cardImage = cardElement.querySelector('.photo-grid__item');
+    cardImage.src = data.link;
+
+    const cardName = cardElement.querySelector('.photo-grid__title');
+    cardImage.alt = data.name;
+    cardName.textContent = data.name;
+
+    return cardElement;
+}
+
+initialCards.forEach(function(data){
+    const arrayCardImg = createCardImg(data);
+    listPhoto.append(arrayCardImg);
+})
+
+function createNewCard (evt) {
+    evt.preventDefault();
+    const cardElement = template.cloneNode(true);
+    const cardImage = cardElement.querySelector('.photo-grid__item');
+    cardImage.src = imgLink.value;
+
+    const cardName = cardElement.querySelector('.photo-grid__title');
+    cardImage.alt = placeName.value;
+    cardName.textContent = placeName.value;
+
+    listPhoto.prepend(cardElement);
+    evt.target.reset();
+}
+
+
 // События
 
 EditProfile.addEventListener('click', function() {
@@ -44,7 +114,10 @@ CloseProfilePopup.addEventListener('click', function(){
     ClosePopup(profilePopup);
 })
 
-FormElement.addEventListener('submit', handleSubmitForm);
+profileFormElement.addEventListener('submit', handleSubmitForm);
+profileFormElement.addEventListener('submit', function(){
+    ClosePopup(profilePopup);
+});
 
 addCard.addEventListener('click', function(){
     OpenedPopup(PopupCard);
@@ -53,6 +126,15 @@ addCard.addEventListener('click', function(){
 CloseCardPopup.addEventListener('click', function(){
     ClosePopup(PopupCard);
 })
+
+cardFormElement.addEventListener('submit', createNewCard);
+cardFormElement.addEventListener('submit', function(){
+    ClosePopup(PopupCard);
+});
+
+
+
+
 
 
 

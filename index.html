@@ -114,6 +114,20 @@
                 </div>                           
             </div> 
 
+            <!--template для добавления карточки на страницу-->
+         <template id="photo-grid-item-template">
+            <div class="photo-grid__container">
+                <img class="photo-grid__item" src="" alt="">
+                <div class="photo-grid__title-box">
+                    <h2 class="photo-grid__title"></h2>
+                    <button type="button" class="photo-grid__heart" aria-label="поставить класс"></button>
+                </div> 
+                <button type="button" class="photo-grid__delete-img" aria-label="удалить картинку"></button>             
+            </div>
+        </template>
+
+        <script src="./index.js" defer></script>
+
     </body>
-    <script src="./index.js"></script>
+   
 </html>
