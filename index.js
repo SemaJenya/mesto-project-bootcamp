@@ -54,6 +54,7 @@ const saveCardButton = cardFormElement.querySelector('.form__button');
 
 
 
+
 // Функции
 
 function OpenedPopup (Element) { 
@@ -72,36 +73,40 @@ function handleSubmitForm (evt) {
 }
 
 
-function createCardImg (data) {
+function createCardImg (data1, data2) {
     const cardElement = template.cloneNode(true);
     const cardImage = cardElement.querySelector('.photo-grid__item');
-    cardImage.src = data.link;
+    cardImage.src = data1;
 
     const cardName = cardElement.querySelector('.photo-grid__title');
-    cardImage.alt = data.name;
-    cardName.textContent = data.name;
+    cardImage.alt = data2;
+    cardName.textContent = data2;
+
+    const deleteCard = cardElement.querySelector('.photo-grid__delete-img');
+    deleteCard.addEventListener('click', function(){
+        cardElement.remove();
+    })
+
+    const likeCard = cardElement.querySelector('.photo-grid__heart');
+    likeCard.addEventListener('click', function(){
+        likeCard.classList.toggle('photo-grid__heart_type_active');
+    })
 
     return cardElement;
 }
 
-initialCards.forEach(function(data){
-    const arrayCardImg = createCardImg(data);
+initialCards.forEach(function(initialCards){
+    const arrayCardImg = createCardImg(initialCards.link, initialCards.name);
     listPhoto.append(arrayCardImg);
 })
 
 function createNewCard (evt) {
     evt.preventDefault();
-    const cardElement = template.cloneNode(true);
-    const cardImage = cardElement.querySelector('.photo-grid__item');
-    cardImage.src = imgLink.value;
-
-    const cardName = cardElement.querySelector('.photo-grid__title');
-    cardImage.alt = placeName.value;
-    cardName.textContent = placeName.value;
-
-    listPhoto.prepend(cardElement);
+    listPhoto.prepend(createCardImg (imgLink.value, placeName.value));
     evt.target.reset();
 }
+
+
 
 
 // События
@@ -131,6 +136,12 @@ cardFormElement.addEventListener('submit', createNewCard);
 cardFormElement.addEventListener('submit', function(){
     ClosePopup(PopupCard);
 });
+
+
+
+
+
+
 
 
 
