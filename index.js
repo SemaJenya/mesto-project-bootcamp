@@ -57,6 +57,7 @@ const fullImagePopup = document.querySelector('#fullCardPopup');
 const fullImageElement = fullImagePopup.querySelector('.popup__full-image');
 const fullImageTitle = fullImagePopup.querySelector('.popup__title');
 const fullImageClosePopup = fullImagePopup.querySelector('.popup__close');
+const fullImageBody = fullImagePopup.querySelector('.popup__body_type_full-image');
 
 
 
@@ -77,7 +78,6 @@ function handleSubmitForm (evt) {
     profileName.textContent = nameInput.value;
     profileDescription.textContent = discriptionInput.value;
 }
-
 
 function createCardImg (link, name) {
     const cardElement = template.cloneNode(true);
@@ -106,6 +106,11 @@ function createCardImg (link, name) {
     fullImageClosePopup.addEventListener('click', function(){
         ClosePopup(fullImagePopup);
     })
+    fullImagePopup.addEventListener('click', function(e){
+        if (e.target === fullImagePopup) {
+            ClosePopup(fullImagePopup);
+        };
+    })
 
     function clickImage (e){
         fullImageElement.src = e.target.src;
@@ -126,11 +131,6 @@ function createNewCard (evt) {
     listPhoto.prepend(createCardImg (imgLink.value, placeName.value));
     evt.target.reset();
 }
-
-
-
-
-
 
 // События
 
