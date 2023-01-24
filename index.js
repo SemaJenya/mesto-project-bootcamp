@@ -52,6 +52,12 @@ const placeName = cardFormElement.querySelector('.form__item_type_placeName');
 const imgLink = cardFormElement.querySelector('.form__item_type_imgLink');
 const saveCardButton = cardFormElement.querySelector('.form__button');
 
+// найдем элементы для открытия попапа с полной картинкой
+const fullImagePopup = document.querySelector('#fullCardPopup');
+const fullImageElement = fullImagePopup.querySelector('.popup__full-image');
+const fullImageTitle = fullImagePopup.querySelector('.popup__title');
+const fullImageClosePopup = fullImagePopup.querySelector('.popup__close');
+
 
 
 
@@ -73,14 +79,14 @@ function handleSubmitForm (evt) {
 }
 
 
-function createCardImg (data1, data2) {
+function createCardImg (link, name) {
     const cardElement = template.cloneNode(true);
     const cardImage = cardElement.querySelector('.photo-grid__item');
-    cardImage.src = data1;
+    cardImage.src = link;
 
     const cardName = cardElement.querySelector('.photo-grid__title');
-    cardImage.alt = data2;
-    cardName.textContent = data2;
+    cardImage.alt = name;
+    cardName.textContent = name;
 
     const deleteCard = cardElement.querySelector('.photo-grid__delete-img');
     deleteCard.addEventListener('click', function(){
@@ -91,6 +97,21 @@ function createCardImg (data1, data2) {
     likeCard.addEventListener('click', function(){
         likeCard.classList.toggle('photo-grid__heart_type_active');
     })
+
+    cardImage.addEventListener('click', function(){
+        OpenedPopup(fullImagePopup);
+    })
+    cardImage.addEventListener('click', clickImage);
+
+    fullImageClosePopup.addEventListener('click', function(){
+        ClosePopup(fullImagePopup);
+    })
+
+    function clickImage (e){
+        fullImageElement.src = e.target.src;
+        fullImageElement.alt = e.target.alt;
+        fullImageTitle.textContent = e.target.alt;
+    }
 
     return cardElement;
 }
@@ -105,6 +126,8 @@ function createNewCard (evt) {
     listPhoto.prepend(createCardImg (imgLink.value, placeName.value));
     evt.target.reset();
 }
+
+
 
 
 

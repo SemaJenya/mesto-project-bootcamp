@@ -59,3 +59,10 @@
 /* Footer */
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__caption/footer__caption.css);
+
+
+/* Попап открытия полной картинки */
+@import url(../blocks/popup/__body/_type/popup__body_type_full-image.css);
+@import url(../blocks/popup/__full-image/popup__full-image.css);
+@import url(../blocks/popup/__title/_type/popup__title_type_full-image.css);
+@import url(../blocks/popup/_image/popup_image.css);

@@ -1,5 +1,6 @@
 .form__button {
     width: 358px;
+    border: none;
     margin-top: 31px;
     background-color: black;
     color: white;
