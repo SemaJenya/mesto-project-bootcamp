@@ -35,7 +35,8 @@ export function handleSubmitForm (evt) {
     profileDescription.textContent = discriptionInput.value;
 }
 
-export function editProfileName () {
+export function editProfileName (e) {
+    e.preventDefault();
     nameInput.textContent = profileName.value;
     discriptionInput.textContent = profileDescription.value;
 }

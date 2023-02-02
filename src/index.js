@@ -24,9 +24,9 @@ const closeCardPopup = popupCard.querySelector('.popup__close');
 
 // События
 
-editProfile.addEventListener('click', function() {
-    openedPopup(profilePopup);
-    editProfileName();
+editProfile.addEventListener('click', function(e) {
+    openedPopup(profilePopup);    
+    editProfileName (e);
 });
 
 closeProfilePopup.addEventListener('click', function(){
@@ -35,7 +35,7 @@ closeProfilePopup.addEventListener('click', function(){
 
 profileFormElement.addEventListener('submit', function(e){
     closePopup(profilePopup);
-    handleSubmitForm(e)
+    handleSubmitForm(e);
 });
 
 addCard.addEventListener('click', function(){
