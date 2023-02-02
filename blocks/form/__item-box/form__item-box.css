@@ -1,0 +1,5 @@
+.form__item-box {
+    min-height: 65px;
+    display: flex;
+    flex-direction: column;
+}

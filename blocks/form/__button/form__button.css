@@ -12,6 +12,7 @@
     transition: ease 0.3s;
     padding: 0;
     cursor: pointer;
+    
 }
 
 .form__button:hover {
