@@ -29,14 +29,14 @@ export function closeOverlayPopup () {
 }
 closeOverlayPopup ();
 
-export function handleSubmitForm (evt) {
-    evt.preventDefault();
+export function handleSubmitForm (e) {
+    e.preventDefault();
     profileName.textContent = nameInput.value;
     profileDescription.textContent = discriptionInput.value;
 }
 
 export function editProfileName (e) {
     e.preventDefault();
-    nameInput.textContent = profileName.value;
-    discriptionInput.textContent = profileDescription.value;
+    nameInput.value = profileName.textContent;
+    discriptionInput.value = profileDescription.textContent;
 }
