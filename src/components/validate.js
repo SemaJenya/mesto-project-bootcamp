@@ -24,6 +24,13 @@ function isValid (formElement, inputElement, objectSelector) {
     }
 }
 
+export function resetErrorsForm(formElement, objectSelector){
+    const inputList = Array.from(formElement.querySelectorAll(objectSelector.inputSelector));
+    const buttonElement = formElement.querySelector(objectSelector.submitButtonSelector);
+    inputList.forEach((inputElement)=>hideInputError(formElement, inputElement, objectSelector));
+    changeButtonState (inputList, buttonElement, objectSelector);
+}
+
 function controlInputValidity (formElement, objectSelector){
     const inputList = Array.from(formElement.querySelectorAll(objectSelector.inputSelector));
     const buttonElement = formElement.querySelector(objectSelector.submitButtonSelector);
@@ -55,8 +62,8 @@ function hasInvalidInput (inputList) {
     })
 }
 
-function changeButtonState (inputList, buttonElement, objectSelector){
-    if (hasInvalidInput (inputList)) {
+export function changeButtonState (inputList, buttonElement, objectSelector){
+    if (hasInvalidInput(inputList)) {
         buttonElement.setAttribute('disabled', true);
         buttonElement.classList.add(objectSelector.inactiveButtonClass);
     }
@@ -68,4 +75,7 @@ function changeButtonState (inputList, buttonElement, objectSelector){
 
 export function enableValidation (objectSelector) {
     controlFormValidity (objectSelector);
+    console.log('сработала валидация');
  }
+
+ 

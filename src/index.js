@@ -2,7 +2,7 @@ import { cardFormElement, createNewCard, fullImageClosePopup, fullImagePopup } f
 import { validationObject } from './components/const.js';
 import { editProfileName, handleSubmitForm, profileFormElement } from './components/modal.js';
 import { closePopup, openedPopup } from './components/utils.js';
-import { enableValidation } from './components/validate.js';
+import { changeButtonState, enableValidation, resetErrorsForm } from './components/validate.js';
 import './styles/index.css';
 
 
@@ -25,8 +25,9 @@ const closeCardPopup = popupCard.querySelector('.popup__close');
 // События
 
 editProfile.addEventListener('click', function(e) {
+    //resetErrorsForm()
     openedPopup(profilePopup);    
-    editProfileName (e);
+    editProfileName(e);
 });
 
 closeProfilePopup.addEventListener('click', function(){
@@ -39,6 +40,8 @@ profileFormElement.addEventListener('submit', function(e){
 });
 
 addCard.addEventListener('click', function(){
+    resetErrorsForm(cardFormElement, validationObject)
+    cardFormElement.reset()
     openedPopup(popupCard);
 })
 

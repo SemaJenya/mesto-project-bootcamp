@@ -11,23 +11,19 @@ const profileDescription = document.querySelector('.profile__description');
 
 //закрытие попапа на клавищу esc
 export function closeEscPopup (e) {
-    const escPopup = document.querySelector('.popup_opened');
-    if (escPopup && (e.key === 'Escape')) {
+    if (e.key === 'Escape') {
+        const escPopup = document.querySelector('.popup_opened');
         closePopup(escPopup);
     }
 }
 
 //закрытие попапа при клике на оверлей
-export function closeOverlayPopup () {
-    popupList.forEach(function(popupElement){
-        popupElement.addEventListener('click', function(e){
+export function closeOverlayPopup (e) {
             if (e.target === popupElement) {
                 closePopup(popupElement);
             }            
-        })
-    })
-}
-closeOverlayPopup ();
+        }
+
 
 export function handleSubmitForm (e) {
     e.preventDefault();
