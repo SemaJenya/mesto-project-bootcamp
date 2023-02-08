@@ -25,7 +25,6 @@ const closeCardPopup = popupCard.querySelector('.popup__close');
 // События
 
 editProfile.addEventListener('click', function(e) {
-    //resetErrorsForm()
     openedPopup(profilePopup);    
     editProfileName(e);
 });

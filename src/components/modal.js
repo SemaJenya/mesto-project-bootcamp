@@ -18,7 +18,7 @@ export function closeEscPopup (e) {
 }
 
 //закрытие попапа при клике на оверлей
-export function closeOverlayPopup (e) {
+export function closeOverlayPopup (e, popupElement) {
             if (e.target === popupElement) {
                 closePopup(popupElement);
             }            
