@@ -6,8 +6,9 @@ const popupList = Array.from(document.querySelectorAll('.popup'));
 export const profileFormElement = document.forms.profileForm;
 const nameInput = profileFormElement.querySelector('.form__item_type_name');
 const discriptionInput = profileFormElement.querySelector('.form__item_type_discription');
-const profileName = document.querySelector('.profile__name');
-const profileDescription = document.querySelector('.profile__description');
+export const profileName = document.querySelector('.profile__name');
+export const profileDescription = document.querySelector('.profile__description');
+
 
 //закрытие попапа на клавищу esc
 export function closeEscPopup (e) {

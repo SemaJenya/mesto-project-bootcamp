@@ -1,9 +1,12 @@
-import { cardFormElement, createNewCard, fullImageClosePopup, fullImagePopup } from './components/card.js';
+import { cardFormElement, createNewCard, fullImageClosePopup, fullImagePopup, renderCards } from './components/card.js';
 import { validationObject } from './components/const.js';
-import { editProfileName, handleSubmitForm, profileFormElement } from './components/modal.js';
+import { editProfileName, handleSubmitForm, profileDescription, profileFormElement, profileName } from './components/modal.js';
 import { closePopup, openedPopup } from './components/utils.js';
 import { changeButtonState, enableValidation, resetErrorsForm } from './components/validate.js';
 import './styles/index.css';
+
+import './components/api.js'
+import { getAllCards, getProfileInfo } from './components/api.js';
 
 
 
@@ -17,10 +20,32 @@ const popupCard = document.querySelector('#cardPopup');
 const addCard = document.querySelector('.profile__add-button');
 const closeCardPopup = popupCard.querySelector('.popup__close');
 
+// найдем элемент картинки аватара пользователя
+const profileAvatar = document.querySelector('.profile__avatar');
+
 
 // Функция валидации форм
-
  enableValidation (validationObject);
+
+ // Достаем все карточки с сервера
+ getAllCards ()
+ .then(function(data){
+     renderCards (data)
+ })
+ .catch(function(error){
+     console.log('Ошибка', error);
+ })
+
+ // Достаем информацию профиля
+ getProfileInfo ()
+    .then(function(data){
+        profileName.textContent = data.name;
+        profileDescription.textContent = data.about;
+        profileAvatar.src = data.avatar;
+    })
+
+ // Редактируем профиль
+
 
 // События
 

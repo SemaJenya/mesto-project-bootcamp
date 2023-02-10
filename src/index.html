@@ -22,10 +22,10 @@
                     <img class="profile__avatar" src="<%=require('./images/image.png')%>" alt="Аватар пользователя">
                 <div class="profile__form">
                     <div class="profile__name-box">
-                        <h1 class="profile__name">Жак-Ив Кусто</h1>
+                        <h1 class="profile__name"></h1>
                         <button type="button" class="profile__pen" aria-label="редактирование"></button>
                     </div>                   
-                    <p class="profile__description">Исследователь океана</p>
+                    <p class="profile__description"></p>
                 </div>
                 </div> 
                 <button type="button" class="profile__add-button" aria-label="кнопка добавления контента"></button>
@@ -92,7 +92,10 @@
                 <img class="photo-grid__item" src="" alt="">
                 <div class="photo-grid__title-box">
                     <h2 class="photo-grid__title"></h2>
-                    <button type="button" class="photo-grid__heart" aria-label="поставить класс"></button>
+                    <div class="photo-grid__like-box">
+                        <button type="button" class="photo-grid__heart" aria-label="поставить класс"></button>
+                        <p class="photo-grid__heart-like">0</p>
+                    </div>      
                 </div> 
                 <button type="button" class="photo-grid__delete-img" aria-label="удалить картинку"></button>             
             </div>

@@ -1,3 +1,4 @@
+import { getAllCards } from "./api";
 import { initialCards } from "./const";
 import { openedPopup } from "./utils";
 
@@ -49,11 +50,12 @@ export function createCardImg (link, name) {
 
     return cardElement;
 }
-
-initialCards.forEach(function(initialCards){
-    const arrayCardImg = createCardImg(initialCards.link, initialCards.name);
-    listPhoto.append(arrayCardImg);
-})
+export function renderCards (data){
+    data.forEach(function(initialCards){
+        const arrayCardImg = createCardImg(initialCards.link, initialCards.name);
+        listPhoto.append(arrayCardImg);
+    })
+}
 
 export function createNewCard (evt) {
     evt.preventDefault();
