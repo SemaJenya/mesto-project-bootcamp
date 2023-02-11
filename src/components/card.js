@@ -1,5 +1,5 @@
-import { getAllCards } from "./api";
-import { initialCards } from "./const";
+import { userID } from "..";
+import { deleteMyCard, postCard } from "./api";
 import { openedPopup } from "./utils";
 
 
@@ -18,7 +18,8 @@ const fullImageTitle = fullImagePopup.querySelector('.popup__title');
 export const fullImageClosePopup = fullImagePopup.querySelector('.popup__close');
 
 
-export function createCardImg (link, name) {
+
+export function createCardImg (link, name, cardID, ownerID, userID) {
     const cardElement = template.cloneNode(true);
     const cardImage = cardElement.querySelector('.photo-grid__item');
     cardImage.src = link;
@@ -27,10 +28,24 @@ export function createCardImg (link, name) {
     cardImage.alt = name;
     cardName.textContent = name;
 
-    const deleteCard = cardElement.querySelector('.photo-grid__delete-img');
-    deleteCard.addEventListener('click', function(){
-        cardElement.remove();
-    })
+console.log(`userID ${userID}`);
+console.log(`ownerID ${ownerID}`);
+
+    if (userID === ownerID) {
+        const deleteCard = cardElement.querySelector('.photo-grid__delete-img');
+        deleteCard.classList.add('photo-grid__delete-img_active');
+        deleteCard.addEventListener('click', function(){
+        deleteMyCard (cardID)
+            .then(function(){
+                cardElement.remove();
+                console.log(`элемент с id ${cardID} удален`);
+            })
+            .catch (function (){
+                console.log(erorr);
+            })         
+        })
+    }
+        
 
     const likeCard = cardElement.querySelector('.photo-grid__heart');
     likeCard.addEventListener('click', function(){
@@ -51,14 +66,23 @@ export function createCardImg (link, name) {
     return cardElement;
 }
 export function renderCards (data){
-    data.forEach(function(initialCards){
-        const arrayCardImg = createCardImg(initialCards.link, initialCards.name);
+    data.forEach(function(initialCard){
+        const arrayCardImg = createCardImg(initialCard.link, initialCard.name, initialCard._id, initialCard.owner._id, userID);
         listPhoto.append(arrayCardImg);
     })
 }
 
 export function createNewCard (evt) {
     evt.preventDefault();
-    listPhoto.prepend(createCardImg (imgLink.value, placeName.value));
-    evt.target.reset();
+    postCard(placeName.value, imgLink.value)
+        .then (function(data){
+            const newCardID = data._id;
+            const newCardOwnerID = data.owner._id;
+            listPhoto.prepend(createCardImg (imgLink.value, placeName.value, newCardID, newCardOwnerID, userID));
+            evt.target.reset();
+        })
+        .catch(function(){
+            console.log(error);
+        });
 }
+

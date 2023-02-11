@@ -1,3 +1,4 @@
+import { editProfile } from "./api";
 import { closePopup } from "./utils";
 
 const popupList = Array.from(document.querySelectorAll('.popup'));
@@ -30,6 +31,7 @@ export function handleSubmitForm (e) {
     e.preventDefault();
     profileName.textContent = nameInput.value;
     profileDescription.textContent = discriptionInput.value;
+    editProfile (nameInput.value, discriptionInput.value)
 }
 
 export function editProfileName (e) {

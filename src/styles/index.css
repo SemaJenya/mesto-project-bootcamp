@@ -67,6 +67,7 @@
 @import url(../../blocks/photo-grid/__delete-img/photo-grid__delete-img.css);
 @import url(../../blocks/photo-grid/__heart-like/photo-grid__heart-like.css);
 @import url(../../blocks/photo-grid/__like-box/photo-grid__like-box.css);
+@import url(../../blocks/photo-grid/__delete-img/_active/photo-grid__delete-img_active.css);
 
 
 

@@ -29,7 +29,7 @@ export function getProfileInfo (){
 
 
 //добавление новой карточки
-export function patchProfile (cardName, cardLink) {
+export function postCard(cardName, cardLink) {
     return fetch (`${config.url}/cards`, {
         method: 'POST',
         headers: config.headers,
@@ -49,6 +49,18 @@ export function editProfile (name, discription){
         body: JSON.stringify({
             "name": name,
             "about": discription
+        })
+    }).then(checkServerResponse);
+      
+}
+
+//удаление карточки
+export function deleteMyCard (cardID){
+    return fetch (`${config.url}/cards/${cardID}`, {
+        method: 'DELETE',
+        headers: config.headers,
+        body: JSON.stringify({
+            "_id": cardID
         })
     }).then(checkServerResponse);
       

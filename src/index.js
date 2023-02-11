@@ -2,7 +2,7 @@ import { cardFormElement, createNewCard, fullImageClosePopup, fullImagePopup, re
 import { validationObject } from './components/const.js';
 import { editProfileName, handleSubmitForm, profileDescription, profileFormElement, profileName } from './components/modal.js';
 import { closePopup, openedPopup } from './components/utils.js';
-import { changeButtonState, enableValidation, resetErrorsForm } from './components/validate.js';
+import { enableValidation, resetErrorsForm } from './components/validate.js';
 import './styles/index.css';
 
 import './components/api.js'
@@ -27,24 +27,30 @@ const profileAvatar = document.querySelector('.profile__avatar');
 // Функция валидации форм
  enableValidation (validationObject);
 
- // Достаем все карточки с сервера
- getAllCards ()
- .then(function(data){
-     renderCards (data)
- })
- .catch(function(error){
-     console.log('Ошибка', error);
- })
-
+ export let userID = undefined;
  // Достаем информацию профиля
  getProfileInfo ()
     .then(function(data){
         profileName.textContent = data.name;
         profileDescription.textContent = data.about;
         profileAvatar.src = data.avatar;
+        userID = data._id;
+        console.log(userID);
     })
+    .catch(function(error){
+        console.log('Ошибка', error);
+    });
 
- // Редактируем профиль
+ // Достаем все карточки с сервера
+ getAllCards ()
+    .then(function(data){
+        renderCards (data)
+    })
+    .catch(function(error){
+        console.log('Ошибка', error);
+    });
+
+
 
 
 // События

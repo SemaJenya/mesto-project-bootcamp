@@ -12,6 +12,8 @@
     cursor: pointer;
     transition: ease 0.3s;
     padding: 0;
+    visibility: hidden;
+    opacity: 0;
 }
 
 .photo-grid__delete-img:hover {
