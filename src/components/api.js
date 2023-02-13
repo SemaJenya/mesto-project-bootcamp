@@ -74,4 +74,12 @@ export function updateLikeCard (cardID, isLike){
 }
 
 //редактирование аватара пользователя
-
+export function editMyProfile (avatarLink){
+    return fetch (`${config.url}/users/me/avatar }`, {
+        method: 'PATCH',
+        headers: config.headers,
+        body: JSON.stringify({
+            "avatar": avatarLink
+        })
+    }).then(checkServerResponse);    
+}

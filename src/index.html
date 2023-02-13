@@ -19,7 +19,10 @@
             <!--Профиль-->
             <section class="profile content__container">
                 <div class="profile__info">
-                    <img class="profile__avatar" src="<%=require('./images/image.png')%>" alt="Аватар пользователя">
+                    <div class="profile__avatar-box">
+                        <img class="profile__avatar" src="<%=require('./images/image.png')%>" alt="Аватар пользователя">
+                        <button type="button" class="profile__avatar-edit" aria-label="редактировать аватар"></button>
+                    </div>
                 <div class="profile__form">
                     <div class="profile__name-box">
                         <h1 class="profile__name"></h1>
