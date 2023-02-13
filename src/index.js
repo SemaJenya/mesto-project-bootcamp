@@ -96,6 +96,8 @@ fullImageClosePopup.addEventListener('click', function(){
 })
 
 editAvatar.addEventListener('click', function(){
+    resetErrorsForm(avatarForm, validationObject)
+    avatarForm.reset()
     openedPopup(avatarPopup);
 })
 
@@ -106,6 +108,8 @@ closeAvatarPopup.addEventListener('click', function(){
 avatarForm.addEventListener('submit', function(e){
     closePopup(avatarPopup);
     editProfileAvatar (e);
+    resetErrorsForm(avatarForm, validationObject)
+    avatarForm.reset()
 })
 
 

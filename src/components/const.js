@@ -33,7 +33,7 @@ export  const validationObject = {
     inputSelector: '.form__item',
     submitButtonSelector: '.form__button',
     inactiveButtonClass: 'form__button_disabled',
-    inputErrorClass: 'form__input_type_error',
+    inputErrorClass: 'form__item_type_error',
     errorClass: 'form__item-error_active'
 }; 
 

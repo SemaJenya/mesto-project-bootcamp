@@ -100,7 +100,6 @@ function isLike (data, userID){
 }
 
 function updateLikeView(dataCard, userID, likeCard, counterLikes){
-    console.log(isLike(dataCard, userID));
     if(isLike(dataCard, userID)){
         likeCard.classList.add('photo-grid__heart_type_active');
     } else {

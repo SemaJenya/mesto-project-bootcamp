@@ -54,9 +54,7 @@ export function editProfileAvatar (e){
     e.preventDefault();
     editMyAvatar (avatarLinkInput.value)
         .then(function(data){
-            console.log(data);
             avatarLinkProfile.src = data.avatar;
-            console.log("edit avatar")
         })
         .catch(function(){
             console.log(error);
