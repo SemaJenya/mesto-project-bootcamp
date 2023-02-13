@@ -1,6 +1,6 @@
 import { cardFormElement, createNewCard, fullImageClosePopup, fullImagePopup, renderCards } from './components/card.js';
 import { validationObject } from './components/const.js';
-import { editProfileName, handleSubmitForm, profileDescription, profileFormElement, profileName } from './components/modal.js';
+import { avatarForm, editProfileAvatar, editProfileName, handleSubmitForm, profileDescription, profileFormElement, profileName } from './components/modal.js';
 import { closePopup, openedPopup } from './components/utils.js';
 import { enableValidation, resetErrorsForm } from './components/validate.js';
 import './styles/index.css';
@@ -27,6 +27,7 @@ const profileAvatar = document.querySelector('.profile__avatar');
 const avatarPopup = document.querySelector('#avatarPopup');
 const editAvatar = document.querySelector('.profile__avatar-edit');
 const closeAvatarPopup = avatarPopup.querySelector('.popup__close');
+
 
 
 
@@ -100,6 +101,11 @@ editAvatar.addEventListener('click', function(){
 
 closeAvatarPopup.addEventListener('click', function(){
     closePopup(avatarPopup);
+})
+
+avatarForm.addEventListener('submit', function(e){
+    closePopup(avatarPopup);
+    editProfileAvatar (e);
 })
 
 

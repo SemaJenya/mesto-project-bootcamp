@@ -74,8 +74,8 @@ export function updateLikeCard (cardID, isLike){
 }
 
 //редактирование аватара пользователя
-export function editMyProfile (avatarLink){
-    return fetch (`${config.url}/users/me/avatar }`, {
+export function editMyAvatar (avatarLink){
+    return fetch (`${config.url}/users/me/avatar`, {
         method: 'PATCH',
         headers: config.headers,
         body: JSON.stringify({
@@ -83,3 +83,8 @@ export function editMyProfile (avatarLink){
         })
     }).then(checkServerResponse);    
 }
+
+// editMyAvatar ('https://image.shutterstock.com/image-photo/wind-turbines-farm-beautiful-orange-260nw-1449359885.jpg')
+// .then(function(data){
+//     console.log(data);
+// })
