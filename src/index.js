@@ -23,6 +23,12 @@ const closeCardPopup = popupCard.querySelector('.popup__close');
 // найдем элемент картинки аватара пользователя
 const profileAvatar = document.querySelector('.profile__avatar');
 
+//найдем элементы для редактирования аватара пользователя
+const avatarPopup = document.querySelector('#avatarPopup');
+const editAvatar = document.querySelector('.profile__avatar-edit');
+const closeAvatarPopup = avatarPopup.querySelector('.popup__close');
+
+
 
 // Функция валидации форм
  enableValidation (validationObject);
@@ -88,6 +94,13 @@ fullImageClosePopup.addEventListener('click', function(){
     closePopup(fullImagePopup);
 })
 
+editAvatar.addEventListener('click', function(){
+    openedPopup(avatarPopup);
+})
+
+closeAvatarPopup.addEventListener('click', function(){
+    closePopup(avatarPopup);
+})
 
 
 

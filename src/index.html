@@ -48,7 +48,7 @@
             <div class="popup" id="profilePopup" tabindex="0">                    
                 <div class="popup__body">
                     <h2 class="popup__title">Редактировать профиль</h2>
-                    <form class="form" name="profileForm" method="post" novalidate>
+                    <form class="form" name="profileForm" novalidate>
                         <div class="form__item-box">
                             <input id="name-input" type="text" class="form__item form__item_type_name" name="name" placeholder="Имя" required minlength="2" maxlength="40">
                             <span class="name-input-error form__item-error"></span>
@@ -66,7 +66,7 @@
             <div class="popup" id="cardPopup" tabindex="0">                    
                 <div class="popup__body">
                     <h2 class="popup__title">Новое место</h2>
-                    <form class="form" name="cardForm" method="post" novalidate>
+                    <form class="form" name="cardForm" novalidate>
                         <div class="form__item-box">
                             <input id="placeName-input" type="text" class="form__item form__item_type_placeName" name="placeName" placeholder="Название" required minlength="2" maxlength="30">
                             <span class="placeName-input-error form__item-error"></span>
@@ -89,6 +89,20 @@
                 </div>                           
             </div> 
 
+            <!--Модальное окно редактирования аватара пользователя-->
+            <div class="popup" id="avatarPopup" tabindex="0">                    
+                <div class="popup__body">
+                    <h2 class="popup__title">Обновить аватар</h2>
+                    <form class="form" name="avatarForm" novalidate>
+                        <div class="form__item-box">
+                            <input id="avatarLink-input" type="url" class="form__item form__item_type_imgLink" name="imgLink" placeholder="Ссылка на картинку" required>
+                            <span class="avatarLink-input-error form__item-error"></span>                       
+                        </div>                      
+                        <button class="form__button" name="button" aria-label="Новый аватар">Сохранить</button>
+                    </form>
+                    <button type="button" class="popup__close" aria-label="крестик"></button>
+                </div>                           
+            </div>
          <!--template для добавления карточки на страницу-->
          <template id="photo-grid-item-template">
             <div class="photo-grid__container">
