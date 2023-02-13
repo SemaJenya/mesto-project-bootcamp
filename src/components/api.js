@@ -62,8 +62,16 @@ export function deleteMyCard (cardID){
         body: JSON.stringify({
             "_id": cardID
         })
-    }).then(checkServerResponse);
-      
+    }).then(checkServerResponse);    
 }
 
+//постановка и удаление лайка карточки
+export function updateLikeCard (cardID, isLike){
+    return fetch (`${config.url}/cards/likes/${cardID}`, {
+        method: isLike? 'DELETE' : 'PUT',
+        headers: config.headers,
+    }).then(checkServerResponse);    
+}
+
+//редактирование аватара пользователя
 

@@ -1,5 +1,5 @@
 import { userID } from "..";
-import { deleteMyCard, postCard } from "./api";
+import { deletelikesCard, deleteMyCard, likesCard, postCard, updateLikeCard } from "./api";
 import { openedPopup } from "./utils";
 
 
@@ -19,37 +19,44 @@ export const fullImageClosePopup = fullImagePopup.querySelector('.popup__close')
 
 
 
-export function createCardImg (link, name, cardID, ownerID, userID) {
+export function createCardImg (dataCard, userID) {
     const cardElement = template.cloneNode(true);
     const cardImage = cardElement.querySelector('.photo-grid__item');
-    cardImage.src = link;
+    cardImage.src = dataCard.link;
 
     const cardName = cardElement.querySelector('.photo-grid__title');
-    cardImage.alt = name;
-    cardName.textContent = name;
+    cardImage.alt = dataCard.name;
+    cardName.textContent = dataCard.name;
 
-console.log(`userID ${userID}`);
-console.log(`ownerID ${ownerID}`);
-
-    if (userID === ownerID) {
+    if (userID === dataCard.owner._id) {
         const deleteCard = cardElement.querySelector('.photo-grid__delete-img');
         deleteCard.classList.add('photo-grid__delete-img_active');
         deleteCard.addEventListener('click', function(){
-        deleteMyCard (cardID)
+        deleteMyCard (dataCard._id)
             .then(function(){
                 cardElement.remove();
-                console.log(`элемент с id ${cardID} удален`);
+                console.log(`элемент с id ${dataCard._id} удален`);
             })
             .catch (function (){
                 console.log(erorr);
             })         
         })
     }
-        
-
+    
     const likeCard = cardElement.querySelector('.photo-grid__heart');
+    const counterLikes = cardElement.querySelector('.photo-grid__heart-like');
+
+    updateLikeView(dataCard, userID, likeCard, counterLikes);
+
     likeCard.addEventListener('click', function(){
-        likeCard.classList.toggle('photo-grid__heart_type_active');
+        updateLikeCard(dataCard._id, isLike(dataCard, userID))
+            .then(function(data){  
+                dataCard.likes = data.likes;
+                updateLikeView(dataCard, userID, likeCard, counterLikes)
+            })
+            .catch (function (){
+                console.log(erorr);
+            }) 
     })
 
     cardImage.addEventListener('click', function(e){
@@ -65,9 +72,10 @@ console.log(`ownerID ${ownerID}`);
 
     return cardElement;
 }
+
 export function renderCards (data){
-    data.forEach(function(initialCard){
-        const arrayCardImg = createCardImg(initialCard.link, initialCard.name, initialCard._id, initialCard.owner._id, userID);
+    data.forEach(function(dataCard){
+        const arrayCardImg = createCardImg(dataCard, userID);
         listPhoto.append(arrayCardImg);
     })
 }
@@ -75,14 +83,29 @@ export function renderCards (data){
 export function createNewCard (evt) {
     evt.preventDefault();
     postCard(placeName.value, imgLink.value)
-        .then (function(data){
-            const newCardID = data._id;
-            const newCardOwnerID = data.owner._id;
-            listPhoto.prepend(createCardImg (imgLink.value, placeName.value, newCardID, newCardOwnerID, userID));
+        .then (function(dataCard){
+            console.log(dataCard);
+            listPhoto.prepend(createCardImg (dataCard, userID));
             evt.target.reset();
         })
         .catch(function(){
             console.log(error);
         });
+}
+
+function isLike (data, userID){
+   return data.likes.some(function(object){
+        return object._id === userID   
+    })
+}
+
+function updateLikeView(dataCard, userID, likeCard, counterLikes){
+    console.log(isLike(dataCard, userID));
+    if(isLike(dataCard, userID)){
+        likeCard.classList.add('photo-grid__heart_type_active');
+    } else {
+        likeCard.classList.remove('photo-grid__heart_type_active');
+    }
+    counterLikes.textContent = dataCard.likes.length;
 }
 
