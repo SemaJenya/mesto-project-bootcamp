@@ -16,3 +16,13 @@ export function closePopup (popupElement) {
         closeOverlayPopup(e, popupElement);
     })
 }
+
+export function serverLoadButton ({button, text, disabled}){
+    if (!disabled){
+        button.disabled = false;
+    }
+    else {
+        button.disabled = 'disabled';
+    }
+    button.textContent = text;
+}

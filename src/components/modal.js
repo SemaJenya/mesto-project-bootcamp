@@ -1,5 +1,5 @@
 import { editMyAvatar, editProfile } from "./api";
-import { closePopup } from "./utils";
+import { closePopup, serverLoadButton } from "./utils";
 
 const popupList = Array.from(document.querySelectorAll('.popup'));
 
@@ -9,11 +9,14 @@ const nameInput = profileFormElement.querySelector('.form__item_type_name');
 const discriptionInput = profileFormElement.querySelector('.form__item_type_discription');
 export const profileName = document.querySelector('.profile__name');
 export const profileDescription = document.querySelector('.profile__description');
+const saveUpdateProfile = profileFormElement.querySelector('.form__button');
 
 // найдем элементы для редактирования аватара пользователя
 export const avatarForm = document.forms.avatarForm;
 const avatarLinkInput = avatarForm.querySelector('.form__item_type_imgLink');
 const avatarLinkProfile = document.querySelector('.profile__avatar');
+const saveAvatarButton = avatarForm.querySelector('.form__button');
+
 
 
 //закрытие попапа на клавищу esc
@@ -34,6 +37,11 @@ export function closeOverlayPopup (e, popupElement) {
 
 export function handleSubmitForm (e) {
     e.preventDefault();
+    serverLoadButton ({
+        button: saveUpdateProfile,
+        text: 'Сохранение...',
+        disabled: true
+    })
     editProfile (nameInput.value, discriptionInput.value)
         .then(function(){
             profileName.textContent = nameInput.value;
@@ -42,6 +50,14 @@ export function handleSubmitForm (e) {
         .catch(function(){
             console.log(error);
         })
+        .finally (function(){
+            serverLoadButton ({
+                button: saveUpdateProfile,
+                text: 'Сохранить',
+                disabled: false
+            })
+        })
+        
 }
 
 export function editProfileName (e) {
@@ -52,11 +68,23 @@ export function editProfileName (e) {
 
 export function editProfileAvatar (e){
     e.preventDefault();
+    serverLoadButton ({
+        button: saveAvatarButton,
+        text: 'Сохранение...',
+        disabled: true
+    })
     editMyAvatar (avatarLinkInput.value)
         .then(function(data){
             avatarLinkProfile.src = data.avatar;
         })
         .catch(function(){
             console.log(error);
+        })
+        .finally (function(){
+            serverLoadButton ({
+                button: saveAvatarButton,
+                text: 'Сохранить',
+                disabled: false
+            })
         })
 }

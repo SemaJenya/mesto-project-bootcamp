@@ -1,6 +1,6 @@
 import { userID } from "..";
-import { deletelikesCard, deleteMyCard, likesCard, postCard, updateLikeCard } from "./api";
-import { openedPopup } from "./utils";
+import { deleteMyCard, postCard, updateLikeCard } from "./api";
+import { openedPopup, serverLoadButton } from "./utils";
 
 
 // найдем элементы для добавления карточки на страницу
@@ -10,6 +10,7 @@ const listPhoto = document.querySelector('.photo-grid');
 export const cardFormElement = document.forms.cardForm;
 const placeName = cardFormElement.querySelector('.form__item_type_placeName');
 const imgLink = cardFormElement.querySelector('.form__item_type_imgLink');
+const saveNewCard = cardFormElement.querySelector('.form__button');
 
 // найдем элементы для открытия попапа с полной картинкой
 export const fullImagePopup = document.querySelector('#fullCardPopup');
@@ -82,6 +83,11 @@ export function renderCards (data){
 
 export function createNewCard (evt) {
     evt.preventDefault();
+    serverLoadButton ({
+        button: saveNewCard,
+        text: 'Сохранение...',
+        disabled: true
+    })
     postCard(placeName.value, imgLink.value)
         .then (function(dataCard){
             console.log(dataCard);
@@ -90,7 +96,14 @@ export function createNewCard (evt) {
         })
         .catch(function(){
             console.log(error);
-        });
+        })
+        .finally (function(){
+            serverLoadButton ({
+                button: saveNewCard,
+                text: 'Сохранить',
+                disabled: false
+            })
+        })
 }
 
 function isLike (data, userID){
