@@ -1,6 +1,6 @@
 import { cardFormElement, createNewCard, fullImageClosePopup, fullImagePopup, renderCards } from './components/card.js';
 import { validationObject } from './components/const.js';
-import { avatarForm, editProfileAvatar, editProfileName, handleSubmitForm, profileDescription, profileFormElement, profileName } from './components/modal.js';
+import { avatarForm, editProfileAvatar, editProfileName, handleProfileSubmitForm, profileDescription, profileFormElement, profileName } from './components/modal.js';
 import { closePopup, openedPopup } from './components/utils.js';
 import { enableValidation, resetErrorsForm } from './components/validate.js';
 import './styles/index.css';
@@ -35,30 +35,21 @@ const closeAvatarPopup = avatarPopup.querySelector('.popup__close');
  enableValidation (validationObject);
 
  export let userID = undefined;
- // Достаем информацию профиля
- getProfileInfo ()
-    .then(function(data){
-        profileName.textContent = data.name;
-        profileDescription.textContent = data.about;
-        profileAvatar.src = data.avatar;
-        userID = data._id;
+ // Достаем информацию профиля и карточки с сервера
+
+Promise.all([getProfileInfo (), getAllCards ()])
+    .then(function([userData, cardsData]){
+        profileName.textContent = userData.name;
+        profileDescription.textContent = userData.about;
+        profileAvatar.src = userData.avatar;
+        userID = userData._id;
         console.log(userID);
+
+        renderCards (cardsData)
     })
     .catch(function(error){
         console.log('Ошибка', error);
     });
-
- // Достаем все карточки с сервера
- getAllCards ()
-    .then(function(data){
-        renderCards (data)
-    })
-    .catch(function(error){
-        console.log('Ошибка', error);
-    });
-
-
-
 
 // События
 
@@ -73,7 +64,7 @@ closeProfilePopup.addEventListener('click', function(){
 
 profileFormElement.addEventListener('submit', function(e){
     closePopup(profilePopup);
-    handleSubmitForm(e);
+    handleProfileSubmitForm(e);
 });
 
 addCard.addEventListener('click', function(){
@@ -97,7 +88,6 @@ fullImageClosePopup.addEventListener('click', function(){
 
 editAvatar.addEventListener('click', function(){
     resetErrorsForm(avatarForm, validationObject)
-    avatarForm.reset()
     openedPopup(avatarPopup);
 })
 
@@ -108,8 +98,6 @@ closeAvatarPopup.addEventListener('click', function(){
 avatarForm.addEventListener('submit', function(e){
     closePopup(avatarPopup);
     editProfileAvatar (e);
-    resetErrorsForm(avatarForm, validationObject)
-    avatarForm.reset()
 })
 
 

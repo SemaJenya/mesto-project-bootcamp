@@ -1,6 +1,6 @@
 import { userID } from "..";
 import { deleteMyCard, postCard, updateLikeCard } from "./api";
-import { openedPopup, serverLoadButton } from "./utils";
+import { openedPopup, renderLoadingButton } from "./utils";
 
 
 // найдем элементы для добавления карточки на страницу
@@ -83,7 +83,7 @@ export function renderCards (data){
 
 export function createNewCard (evt) {
     evt.preventDefault();
-    serverLoadButton ({
+    renderLoadingButton ({
         button: saveNewCard,
         text: 'Сохранение...',
         disabled: true
@@ -98,7 +98,7 @@ export function createNewCard (evt) {
             console.log(error);
         })
         .finally (function(){
-            serverLoadButton ({
+            renderLoadingButton ({
                 button: saveNewCard,
                 text: 'Сохранить',
                 disabled: false

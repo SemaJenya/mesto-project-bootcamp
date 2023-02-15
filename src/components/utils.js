@@ -17,7 +17,7 @@ export function closePopup (popupElement) {
     })
 }
 
-export function serverLoadButton ({button, text, disabled}){
+export function renderLoadingButton ({button, text, disabled}){
     if (!disabled){
         button.disabled = false;
     }

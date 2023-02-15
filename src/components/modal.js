@@ -1,5 +1,5 @@
 import { editMyAvatar, editProfile } from "./api";
-import { closePopup, serverLoadButton } from "./utils";
+import { closePopup, renderLoadingButton } from "./utils";
 
 const popupList = Array.from(document.querySelectorAll('.popup'));
 
@@ -35,9 +35,9 @@ export function closeOverlayPopup (e, popupElement) {
         }
 
 
-export function handleSubmitForm (e) {
+export function handleProfileSubmitForm (e) {
     e.preventDefault();
-    serverLoadButton ({
+    renderLoadingButton ({
         button: saveUpdateProfile,
         text: 'Сохранение...',
         disabled: true
@@ -51,7 +51,7 @@ export function handleSubmitForm (e) {
             console.log(error);
         })
         .finally (function(){
-            serverLoadButton ({
+            renderLoadingButton ({
                 button: saveUpdateProfile,
                 text: 'Сохранить',
                 disabled: false
@@ -68,20 +68,22 @@ export function editProfileName (e) {
 
 export function editProfileAvatar (e){
     e.preventDefault();
-    serverLoadButton ({
+    renderLoadingButton ({
         button: saveAvatarButton,
         text: 'Сохранение...',
         disabled: true
     })
-    editMyAvatar (avatarLinkInput.value)
+    editMyAvatar (avatarLinkInput.value, e)
         .then(function(data){
             avatarLinkProfile.src = data.avatar;
+            e.target.reset();
+            console.log('ok');
         })
         .catch(function(){
             console.log(error);
         })
         .finally (function(){
-            serverLoadButton ({
+            renderLoadingButton ({
                 button: saveAvatarButton,
                 text: 'Сохранить',
                 disabled: false
