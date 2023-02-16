@@ -1,6 +1,6 @@
-import { userID } from "..";
+import { popupCard, userID } from "..";
 import { deleteMyCard, postCard, updateLikeCard } from "./api";
-import { openedPopup, renderLoadingButton } from "./utils";
+import { closePopup, openedPopup, renderLoadingButton } from "./utils";
 
 
 // найдем элементы для добавления карточки на страницу
@@ -44,16 +44,16 @@ export function createCardImg (dataCard, userID) {
         })
     }
     
-    const likeCard = cardElement.querySelector('.photo-grid__heart');
+    const likeButton = cardElement.querySelector('.photo-grid__heart');
     const counterLikes = cardElement.querySelector('.photo-grid__heart-like');
 
-    updateLikeView(dataCard, userID, likeCard, counterLikes);
+    updateLikeView(dataCard, userID, likeButton, counterLikes);
 
-    likeCard.addEventListener('click', function(){
-        updateLikeCard(dataCard._id, isLike(dataCard, userID))
+    likeButton.addEventListener('click', function(){
+        updateLikeCard(dataCard._id, isLiked(dataCard, userID))
             .then(function(data){  
                 dataCard.likes = data.likes;
-                updateLikeView(dataCard, userID, likeCard, counterLikes)
+                updateLikeView(dataCard, userID, likeButton, counterLikes)
             })
             .catch (function (){
                 console.log(erorr);
@@ -94,6 +94,9 @@ export function createNewCard (evt) {
             listPhoto.prepend(createCardImg (dataCard, userID));
             evt.target.reset();
         })
+        .then(function(){
+            closePopup(popupCard);
+        })
         .catch(function(){
             console.log(error);
         })
@@ -106,14 +109,14 @@ export function createNewCard (evt) {
         })
 }
 
-function isLike (data, userID){
+function isLiked (data, userID){
    return data.likes.some(function(object){
         return object._id === userID   
     })
 }
 
 function updateLikeView(dataCard, userID, likeCard, counterLikes){
-    if(isLike(dataCard, userID)){
+    if(isLiked(dataCard, userID)){
         likeCard.classList.add('photo-grid__heart_type_active');
     } else {
         likeCard.classList.remove('photo-grid__heart_type_active');

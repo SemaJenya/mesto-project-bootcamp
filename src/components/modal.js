@@ -1,5 +1,8 @@
+import { avatarPopup, profilePopup } from "..";
 import { editMyAvatar, editProfile } from "./api";
+import { validationObject } from "./const";
 import { closePopup, renderLoadingButton } from "./utils";
+import { resetErrorsForm } from "./validate";
 
 const popupList = Array.from(document.querySelectorAll('.popup'));
 
@@ -28,11 +31,12 @@ export function closeEscPopup (e) {
 }
 
 //закрытие попапа при клике на оверлей
-export function closeOverlayPopup (e, popupElement) {
-            if (e.target === popupElement) {
-                closePopup(popupElement);
-            }            
-        }
+
+export function closeOverlayPopup (e) {
+    if (e.target === e.currentTarget) {
+        closePopup(e.currentTarget);
+    }            
+}
 
 
 export function handleProfileSubmitForm (e) {
@@ -46,6 +50,9 @@ export function handleProfileSubmitForm (e) {
         .then(function(){
             profileName.textContent = nameInput.value;
             profileDescription.textContent = discriptionInput.value;
+        })
+        .then (function(){
+            closePopup(profilePopup);
         })
         .catch(function(){
             console.log(error);
@@ -78,6 +85,10 @@ export function editProfileAvatar (e){
             avatarLinkProfile.src = data.avatar;
             e.target.reset();
             console.log('ok');
+        })
+        .then(function(){
+            closePopup(avatarPopup);
+            resetErrorsForm(avatarForm, validationObject);
         })
         .catch(function(){
             console.log(error);

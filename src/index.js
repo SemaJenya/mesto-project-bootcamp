@@ -12,11 +12,11 @@ import { getAllCards, getProfileInfo } from './components/api.js';
 
 // найдем элементы для открытия и закрытия попапа редактирования профиля
 const editProfile = document.querySelector('.profile__pen');
-const profilePopup = document.querySelector('#profilePopup');
+export const profilePopup = document.querySelector('#profilePopup');
 const closeProfilePopup = profilePopup.querySelector('.popup__close');
 
 // найдем элементы для открытия и закрытия попапа добавления карточки
-const popupCard = document.querySelector('#cardPopup');
+export const popupCard = document.querySelector('#cardPopup');
 const addCard = document.querySelector('.profile__add-button');
 const closeCardPopup = popupCard.querySelector('.popup__close');
 
@@ -24,7 +24,7 @@ const closeCardPopup = popupCard.querySelector('.popup__close');
 const profileAvatar = document.querySelector('.profile__avatar');
 
 //найдем элементы для редактирования аватара пользователя
-const avatarPopup = document.querySelector('#avatarPopup');
+export const avatarPopup = document.querySelector('#avatarPopup');
 const editAvatar = document.querySelector('.profile__avatar-edit');
 const closeAvatarPopup = avatarPopup.querySelector('.popup__close');
 
@@ -63,7 +63,6 @@ closeProfilePopup.addEventListener('click', function(){
 })
 
 profileFormElement.addEventListener('submit', function(e){
-    closePopup(profilePopup);
     handleProfileSubmitForm(e);
 });
 
@@ -78,8 +77,7 @@ closeCardPopup.addEventListener('click', function(){
 })
 
 cardFormElement.addEventListener('submit', function(e){
-    closePopup(popupCard);
-    createNewCard(e)
+    createNewCard(e);
 });
 
 fullImageClosePopup.addEventListener('click', function(){
@@ -87,7 +85,6 @@ fullImageClosePopup.addEventListener('click', function(){
 })
 
 editAvatar.addEventListener('click', function(){
-    resetErrorsForm(avatarForm, validationObject)
     openedPopup(avatarPopup);
 })
 
@@ -96,7 +93,6 @@ closeAvatarPopup.addEventListener('click', function(){
 })
 
 avatarForm.addEventListener('submit', function(e){
-    closePopup(avatarPopup);
     editProfileAvatar (e);
 })
 
