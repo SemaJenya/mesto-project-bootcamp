@@ -3,7 +3,7 @@ import { validationObject } from './components/const.js';
 import { avatarForm, editProfileAvatar, editProfileName, handleProfileSubmitForm, profileDescription, profileFormElement, profileName } from './components/modal.js';
 import { closePopup, openedPopup } from './components/utils.js';
 import { enableValidation, resetErrorsForm } from './components/validate.js';
-import './styles/index.css';
+import '../src/styles/index.css';
 
 import './components/api.js'
 import { getAllCards, getProfileInfo } from './components/api.js';
