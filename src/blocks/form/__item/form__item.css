@@ -4,6 +4,6 @@
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 
-.form__item:invalid {
+/* .form__item:invalid {
     border-bottom: 1px solid #FF0000;
-}
+} */
