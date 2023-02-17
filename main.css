@@ -14,13 +14,13 @@
 .popup__title_type_full-image{color:#fff;font-size:12px;font-weight:400;line-height:15px;margin:10px 0 0}
 .popup_image{background-color:rgba(0,0,0,.9)}
 .form{background-color:#fff;color:#000;display:flex;flex-direction:column;gap:2px;z-index:2}
-.form__item{border:none;border-bottom:1px solid rgba(0,0,0,.2);height:30px}.form__item:invalid{border-bottom:1px solid red}
+.form__item{border:none;border-bottom:1px solid rgba(0,0,0,.2);height:30px}
 .form__button{background-color:#000;border:none;color:#fff;cursor:pointer;font-size:18px;font-weight:400;height:50px;line-height:22px;margin-top:31px;padding:0;text-align:center;transition:.3s ease;width:358px}.form__button:hover{opacity:.8}@media (max-width:660px){.form__button{font-size:14px;height:46px;line-height:17px;width:238px}}
 .form__button_disabled{background-color:#fff;border:1px solid #c4c4c4;color:#c4c4c4}
 .form__item-error{align-self:flex-start;color:red;font-size:12px;font-weight:400;line-height:15px;opacity:0;visibility:hidden}
 .form__item-box{display:flex;flex-direction:column;min-height:65px}
 .form__item-error_active{opacity:1;visibility:visible}
-.form__item_type_error{border-bottom:red}
+.form__item_type_error{border-bottom:1px solid red}
 .header{border-bottom:1px solid rgba(84,84,84,.7);color:#fff;font-family:Inter,Arial,Helvetica,sans-serif;padding:45px 0 41px}@media (max-width:660px){.header{padding:28px 0 31.6px}}
 .logo{max-width:142px}@media (max-width:660px){.logo{max-width:103.74px;padding-left:27px}}
 .content__container{margin:0 auto;max-width:880px}@media (max-width:920px){.content__container{margin:0 20px}}
