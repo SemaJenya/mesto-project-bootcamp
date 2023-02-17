@@ -67,8 +67,8 @@ profileFormElement.addEventListener('submit', function(e){
 });
 
 addCard.addEventListener('click', function(){
-    resetErrorsForm(cardFormElement, validationObject)
     cardFormElement.reset()
+    resetErrorsForm(cardFormElement, validationObject)
     openedPopup(popupCard);
 })
 
@@ -85,6 +85,8 @@ fullImageClosePopup.addEventListener('click', function(){
 })
 
 editAvatar.addEventListener('click', function(){
+    avatarForm.reset()
+    resetErrorsForm(avatarForm, validationObject)
     openedPopup(avatarPopup);
 })
 
