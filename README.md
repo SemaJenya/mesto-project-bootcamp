@@ -23,4 +23,4 @@
 
 **GitHub**
 
-* [Ссылка на GitHub](https://semajenya.github.io/mesto-project-bootcamp/)
+* [Ссылка на GitHub Pages](https://semajenya.github.io/mesto-project-bootcamp/)
