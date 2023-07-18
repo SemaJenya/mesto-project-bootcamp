@@ -3,6 +3,7 @@
 ### Что использовалось
 
 * JavaScript
+* HTML
 * CSS
 * Figma
 * Grid
